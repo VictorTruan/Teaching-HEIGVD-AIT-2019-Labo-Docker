@@ -38,12 +38,37 @@ To add a new image we have some file to change, thoses are the files and the mod
 ![](img/AIT_Labo04_Image04.png)
 
 [M3] Based on your previous answers, you have detected some issues in the current solution. Now propose a better approach at a high level.
+```
+There is too much files to modify, the procedure is too heavy. And we also need to restart all the infrastructure.
+
+It should be a good idea to make thing smoother, for example the load balancer should automatically add new nodes discovered in the network.
+```
 
 [M4] You probably noticed that the list of web application nodes is hardcoded in the load balancer configuration. How can we manage the web app nodes in a more dynamic fashion?
+```
+We can make a system where each new node query the load balancer to tell that he is available to handle load, and then the laod balancer adds them.
+```
 
-[M5] In the physical or virtual machines of a typical infrastructure we tend to have not only one main process (like the web server or the load balancer) running, but a few additional processes on the side to perform management tasks.
+[M5] Do you think our current solution is able to run additional management processes beside the main web server / load balancer process in a container? If no, what is missing / required to reach the goal? If yes, how to proceed to run for example a log forwarding process?
+```
+Yes, we can find a workaround, we can edit the 'run.sh' script and add instruction to log the node activities.
+But this not an optimal solution.
+```
 
 [M6] What happens if we add more web server nodes? Do you think it is really dynamic? It's far away from being a dynamic configuration. Can you propose a solution to solve this?
+(Répondre à la deuxième partie)
+```
+It's not dynamic since we have to restart the load balancer,
+```
+
+Deliverables:
+
+1)
+![](img/AIT_Labo04_Image05.png)
+
+2)
+https://github.com/VictorTruan/Teaching-HEIGVD-AIT-2019-Labo-Docker
+
 #### Chapter 1
 
 #### Chapter 2
