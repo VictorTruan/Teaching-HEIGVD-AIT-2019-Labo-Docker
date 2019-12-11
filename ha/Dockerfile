@@ -18,10 +18,9 @@ RUN curl -sSLo /tmp/s6.tar.gz https://github.com/just-containers/s6-overlay/rele
 
 # TODO: [HB] Install Handlebars
 
-# TODO: [S6] Replace the two following instructions
-# Copy all the scripts and make them executable
-COPY scripts/ /scripts/
-RUN chmod +x /scripts/*.sh
+# Copy the S6 service and make the run script executable
+COPY services/ha /etc/services.d/ha
+RUN chmod +x /etc/services.d/ha/run
 
 # TODO: [Serf] Add Serf S6 setup
 
@@ -46,6 +45,5 @@ EXPOSE 80 1936
 # Define an environment variable
 ENV ROLE balancer
 
-# TODO: [S6] Replace the following instruction
-# Command executed when the container starts
-CMD [ "/scripts/run.sh" ]
+# This will start S6 as our main process in our container
+ENTRYPOINT ["/init"]
