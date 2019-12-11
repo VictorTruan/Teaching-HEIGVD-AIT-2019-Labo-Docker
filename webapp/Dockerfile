@@ -1,8 +1,7 @@
 # The base image is one of the offical one
 FROM node:latest
 
-# TODO: [GEN] Replace with your name and email
-MAINTAINER Laurent Prevost <laurent.prevost@heig-vd.ch>
+MAINTAINER Jérôme Bagnoud <jerome.bagnoud@heig-vd.ch> Victor Truan <victor.truan@heig-vd.ch>
 
 # Install the required tools to run our webapp and some utils
 RUN apt-get update && apt-get -y install wget curl vim && apt-get clean && npm install -g bower
@@ -13,7 +12,10 @@ RUN apt-get update && apt-get -y install wget curl vim && apt-get clean && npm i
 COPY app /backend/app
 RUN cd /backend/app && npm install && bower install --allow-root
 
-# TODO: [S6] Install
+# Download and install S6 overlay
+RUN curl -sSLo /tmp/s6.tar.gz https://github.com/just-containers/s6-overlay/releases/download/v1.17.2.0/s6-overlay-amd64.tar.gz \
+  && tar xzf /tmp/s6.tar.gz -C / \
+  && rm -f /tmp/s6.tar.gz
 
 # TODO: [Serf] Install
 
