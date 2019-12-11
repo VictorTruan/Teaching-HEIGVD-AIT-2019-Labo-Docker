@@ -7,7 +7,7 @@ title: Lab 04 - Docker
 
 #### Introduction
 
-#### Chapter 0
+#### Task 0
 [M1]Do you think we can use the current solution for a production environment? What are the main problems when deploying it in a production environment?
 ``` 
 This is not a good idea to use our previous solution in production because it alwayshave 2 servers and never more or less.
@@ -69,15 +69,25 @@ Deliverables:
 2)
 https://github.com/VictorTruan/Teaching-HEIGVD-AIT-2019-Labo-Docker
 
-#### Chapter 1
+#### Task 1
 
-#### Chapter 2
+1) 
+![](img/AIT_Labo04_Image02.png)
 
-#### Chapter 3
+2)
+We didn't encounter any difficulties as the explanation in the alb instructions were good.
 
-#### Chapter 4
+We are installing a process supervisor, because the Docker philosophy is to run only one process per container, however this is not always what we want to do, so we can use a workaround called S6.
 
-#### Chapter 5
+S6 permit us to run more than one process at a time and even more features. In order to do this we must set the entrypoint of the Docker Image as the S6 process.
+
+#### Task 2
+
+#### Task 3
+
+#### Task 4
+
+#### Task 5
 
 #### Chapter 6
 
