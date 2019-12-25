@@ -1,0 +1,3 @@
+root@9306fbab2b40:/# ls -l /nodes
+total 4
+-rw-r--r-- 1 root root 27 Dec 25 18:52 0268d8cf7763
