@@ -6,6 +6,10 @@ title: Lab 04 - Docker
 #### Table of content
 
 #### Introduction
+```
+We did the last laboratory which was the implementation of backend nodes with a load balancer and how to setup the load balancer to handle the request in differents ways. This was the first step to a full functional solution about having a server delivering services to a variable number of people.
+This laboratory will teach us how to have a dynamic number of nodes and to have a scalable system.
+```
 
 #### Task 0
 [M1]Do you think we can use the current solution for a production environment? What are the main problems when deploying it in a production environment?
@@ -229,10 +233,15 @@ The log file is in /logs/Task6 and is named dockerps.log
 ```
 2)
 ```
-We find the solution really impressive, we have an efficient way to add or remove nodes from the load balancer simply by running or stopping them.
+We find the solution really impressive, we have an efficient way to add or remove nodes from the load balancer simply by running or stopping them. It will be a better solution if we were able to implement a solution which does not have any downtime.
 ```
 
 #### Difficulties
-
+```
+The laboratory was hard because some of the instructions were not really clear so we had to search what to do. We had spme issues with the networks from docker. Docker compose handles the network pretty well in the lastest version so we didn't have the issues about the DNS resolution because this is fully automated.
+```
 
 #### Conclusion.
+```
+This laboratory was interesting because we saw how to make dynamics cluster which is new to us because we are used to have a static number of nodes. In many project we implemented services to be used on a server but we never learned this part which is how to provide the service.
+```
