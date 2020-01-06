@@ -1,7 +1,7 @@
 title: Lab 04 - Docker
 ---
 
-## Lab 03 - Docker
+## Lab 04 - Docker
 
 #### Table of content
 
@@ -10,9 +10,9 @@ title: Lab 04 - Docker
 #### Task 0
 [M1]Do you think we can use the current solution for a production environment? What are the main problems when deploying it in a production environment?
 ``` 
-This is not a good idea to use our previous solution in production because it alwayshave 2 servers and never more or less.
-When a lot of client are going to connect, ourserver could be under too many trafics and could not handle new requests so the newclient won't have any answer.
-In the other case when there is no user, we still have twonode up which are beeing used for nothing and cost money for nothing.
+This is not a good idea to use our previous solution in production because it always have 2 servers and never more or less.
+When a lot of client are going to connect, our server could be under too many trafic and could not handle new requests so the new client won't have any answers.
+In the other case when there is no user, we still have two nodes up which are beeing used for nothing and cost money for nothing.
 ```
 [M2] Describe what you need to do to add new webapp container to the infrastructure. Give the exact steps of what you have to do without modifiying the way the things are done. Hint: You probably have to modify some configuration and script files in a Docker image.
 
@@ -33,7 +33,7 @@ To add a new image we have some file to change, thoses are the files and the mod
 ![](img/AIT_Labo04_Image03.png)
 
 ```
-4) We need to change the .env file to add the servers3 env variables.
+4) We need to change the .env file to add the server 3 env variables.
 ```
 ![](img/AIT_Labo04_Image04.png)
 
@@ -46,7 +46,7 @@ It should be a good idea to make thing smoother, for example the load balancer s
 
 [M4] You probably noticed that the list of web application nodes is hardcoded in the load balancer configuration. How can we manage the web app nodes in a more dynamic fashion?
 ```
-We can make a system where each new node query the load balancer to tell that he is available to handle load, and then the laod balancer adds them.
+We can make a system where each new node query the load balancer to tell that he is available to handle load, and then the load balancer adds them.
 ```
 
 [M5] Do you think our current solution is able to run additional management processes beside the main web server / load balancer process in a container? If no, what is missing / required to reach the goal? If yes, how to proceed to run for example a log forwarding process?
@@ -58,7 +58,7 @@ But this not an optimal solution.
 [M6] What happens if we add more web server nodes? Do you think it is really dynamic? It's far away from being a dynamic configuration. Can you propose a solution to solve this?
 (Répondre à la deuxième partie)
 ```
-It's not dynamic since we have to restart the load balancer,
+It's not dynamic since we have to restart the load balancer.
 ```
 
 Deliverables:
