@@ -76,7 +76,7 @@ https://github.com/VictorTruan/Teaching-HEIGVD-AIT-2019-Labo-Docker
 ![](img/AIT_Labo04_Image06.png)
 
 2)
-We didn't encounter any difficulties as the explanation in the alb instructions were good.
+We didn't encounter any difficulties as the explanation in the lab instructions were good.
 
 We are installing a process supervisor, because the Docker philosophy is to run only one process per container, however this is not always what we want to do, so we can use a workaround called S6.
 
@@ -99,14 +99,14 @@ The ping between the peers was working.
 ![](img/AIT_Labo04_Image07.png)
 
 ```
-Because of the fact the it's working, all the modifications that we sould do to make thoses works won't be apply. The network are handle in the docker-compose file-
+Because of the fact it's working, all the modifications that we sould do to make thoses works won't be apply. The network are handle in the docker-compose file-
 All the asked logs are in the folder following the instructions.
 
 We should not be able to connect right now because they can not find the proxy and we would use --network to help with that.
 ```
-2) A VERIFIER
+2)
 ```
-In our current solution, if we need to reload the load balancer the whole cluster could be deleted which can be an issue because later we want to reconnect to it and it won't be availible anymore and no gossip would be possible.
+In our current solution, if we need to reload the load balancer the whole cluster could be deleted which can be an issue because later we want to reconnect to it and it won't be availible anymore and no gossip would be possible. And if we start our backend nodes before the haproxy the cluster is going to be build after the nodes tried to join it.
 ```
 3)
 ```
@@ -114,8 +114,8 @@ source : https://en.wikipedia.org/wiki/Gossip_protocol
 
 https://www.serf.io/docs/internals/gossip.html
 
-Serf is using the GOSSIP protocol which is a protocol based on how an epidemic spead, it's very usefull when there is no central registry and we want to be sure that everybody have the information.
-It's working in the following way: When somebody got an information, it tells one person about it when there is a "meeting". At the next meeting two peoples will have thie information so both of them will tell 2 peers. The information is now availible for 4 peers and so on.
+Serf is using the GOSSIP protocol which is a protocol based on how an epidemic spread, it's very usefull when there is no central registry and we want to be sure that everybody have the information.
+It's working in the following way: When somebody got an information, it tells one person about it when there is a "meeting". At the next meeting two peoples will have the information so both of them will tell 2 peers. The information is now availible for 4 peers and so on.
 In serf, new node must know at least one IP of an existing member in the cluster to begin the gossip.
 ```
 
@@ -137,10 +137,10 @@ The logs are in the file /logs/Task3/ha_deli2.log
 ```
 
 #### Task 4
-1) A VERIFIER
+1)
 ```
 Not the whole image was rebuilt, the first layer were able to be reused as nothing change before them. But when a layer change we can see that the building process can not use the old layer he has in cache and must rebuilt them.
-We can see that Step2 use a cahce and Step3 can not.
+We can see that Step2 use a cache and Step3 can not.
 ```
 ![](img/AIT_Labo04_Image13.png)
 ![](img/AIT_Labo04_Image14.png)
@@ -154,7 +154,9 @@ When we use a single one with multiple agument, it save us from having too much 
 ```
 2)
 ```
-Our dockerfiles have similarities but thoses are not in the first layers. For example we could change the position of the EXPOSE instruction to be in order with the other identicals instructions. The more identical instructions we can but at the beggining the most layer we won't rebuild.
+Source: https://medium.com/better-programming/optimizing-docker-image-creation-fa06bb42733d
+
+Our dockerfiles have similarities but thoses are not in the first layers. For example we could change the position of some of the RUN,COPY and ADD instructions to be in identical order with the other dockerfiles. The more identical instructions we can put at the beggining the more layer we won't rebuild. It's possible to create one more dockerfile to contains every line they have in common and modify our old dockerfiles to be based on this image and not the old one. We can group all the run instruction into one big run instruction.
 ```
 3)
 ```
